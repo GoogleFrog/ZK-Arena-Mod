@@ -1,10 +1,10 @@
 function widget:GetInfo()
 	return {
-		name      = "Unit Shop",
-		desc      = "Shows units you can buy",
-		author    = "PetTurtle",
-		date      = "2020",
-		layer     = 0,
+		name	  = "Unit Shop",
+		desc	  = "Shows units you can buy",
+		author	= "PetTurtle",
+		date	  = "2020",
+		layer	 = 0,
 		enabled   = true,
 	}
 end
@@ -12,15 +12,15 @@ end
 VFS.Include("LuaRules/Configs/customcmds.h.lua")
 
 local TIER_COLORS = {
-    {0.1, 0.1, 0.1, 0.9},
-    {0.1, 0.9, 0.1, 0.9},
-    {0.1, 0.1, 0.9, 0.9},
-    {0.9, 0.1, 0.9, 0.9},
-    {1, 0.8, 0.1, 1}
+	{0.1, 0.1, 0.1, 0.9},
+	{0.1, 0.9, 0.1, 0.9},
+	{0.1, 0.1, 0.9, 0.9},
+	{0.9, 0.1, 0.9, 0.9},
+	{1, 0.8, 0.1, 1}
 }
 
 local CMD_INSERT = CMD.INSERT
-local CMD_OPT_SHIFT    = CMD.OPT_SHIFT
+local CMD_OPT_SHIFT	= CMD.OPT_SHIFT
 
 local CMD_HQ_UPGRADE = 49734
 local CMD_HQ_REROLL = 49735
@@ -77,16 +77,16 @@ local function updateUI()
 			buttonImages[i].file = "LuaUI/Images/Neon/glass.png"
 			buttonImages[i]:Invalidate()
 			buttons[i].backgroundColor = TIER_COLORS[1]
-            buttons[i]:Invalidate()
-            buttonCostLabels[i]:SetCaption("----")
-            buttonCountLabels[i]:SetCaption("")
+			buttons[i]:Invalidate()
+			buttonCostLabels[i]:SetCaption("----")
+			buttonCountLabels[i]:SetCaption("")
 		else
 			local buyUnitTier = Spring.GetUnitRulesParam(selectedHQID, "HQBuyUnitTier" .. i)
-            buttonImages[i].file = "unitpics/" .. UnitDefs[ud].buildpicname
+			buttonImages[i].file = "unitpics/" .. UnitDefs[ud].buildpicname
 			buttonImages[i]:Invalidate()
 			buttons[i].backgroundColor = TIER_COLORS[buyUnitTier]
-            buttons[i]:Invalidate()
-            buttonCostLabels[i]:SetCaption(math.floor(UnitDefs[ud].metalCost))
+			buttons[i]:Invalidate()
+			buttonCostLabels[i]:SetCaption(math.floor(UnitDefs[ud].metalCost))
 		end
 	end
 end
@@ -118,56 +118,56 @@ function widget:CommandsChanged()
 end
 
 local function CreateUnitButton(buyID)
-    buttons[#buttons + 1] = Chili.Button:New {
-        width = 64,
-        height = 90,
-        margin = {5,5,5,5},
-        padding = {5,5,5,5},
-        caption = "",
-        OnClick = {
+	buttons[#buttons + 1] = Chili.Button:New {
+		width = 64,
+		height = 90,
+		margin = {5,5,5,5},
+		padding = {5,5,5,5},
+		caption = "",
+		OnClick = {
 			function (self)
 				giveBuyCommand(self, buyID)
-            end
-        },
-    }
+			end
+		},
+	}
 
-    buttonImages[#buttonImages + 1] = Chili.Image:New {
-        width = 50,
-        height = 50,
-        file = "LuaUI/Images/Neon/glass.png",
-        keepAspect = true,
-        parent = buttons[#buttons],
-    }
+	buttonImages[#buttonImages + 1] = Chili.Image:New {
+		width = 50,
+		height = 50,
+		file = "LuaUI/Images/Neon/glass.png",
+		keepAspect = true,
+		parent = buttons[#buttons],
+	}
 
-    buttonCostLabels[#buttonCostLabels+1] = Chili.Label:New {
-        width = 50,
-        height = 115,
-        valign ="center",
-        align = "left",
-        caption = "----",
-        textColor = {0.9,0.9,0.9,1.0},
-        parent = buttons[#buttons]
-    }
+	buttonCostLabels[#buttonCostLabels+1] = Chili.Label:New {
+		width = 50,
+		height = 115,
+		valign ="center",
+		align = "left",
+		caption = "----",
+		textColor = {0.9,0.9,0.9,1.0},
+		parent = buttons[#buttons]
+	}
 
-    buttonCountLabels[#buttonCountLabels+1] = Chili.Label:New {
-        width= 45;
-        height= 45;
-        valign ="top",
-        align = "left",
-        caption = "",
-        fontSize = 16;
-        fontShadow = true;
-        textColor = {0.2,0.8,0.2,0.9},
-        parent = buttonImages[#buttonImages]
-    }
+	buttonCountLabels[#buttonCountLabels+1] = Chili.Label:New {
+		width= 45;
+		height= 45;
+		valign ="top",
+		align = "left",
+		caption = "",
+		fontSize = 16;
+		fontShadow = true;
+		textColor = {0.2,0.8,0.2,0.9},
+		parent = buttonImages[#buttonImages]
+	}
 
-    return buttons[#buttons]
+	return buttons[#buttons]
 end
 
 function widget:UnitCmdDone(unitID)
-    if isVisible and selectedHQID == unitID then
-        updateUI()
-    end
+	if isVisible and selectedHQID == unitID then
+		updateUI()
+	end
 end
 
 function widget:Initialize()
@@ -179,30 +179,30 @@ function widget:Initialize()
 
 	window = Chili.Window:New {
 		dockable = true,
-        name = "Unit Shop",
+		name = "Unit Shop",
 		x = 0,
 		y = 40,
 		width = 385,
 		height = 160,
 		margin = {5,5,5,5},
 		padding = {5,5,5,5},
-        classname = "main_window",
-        draggable = true,
-        resizable = false,
-        tweakDraggable = true,
-        tweakResizable = false,
-        minimizanle = false,
-        parent = Chili.Screen0,
+		classname = "main_window",
+		draggable = true,
+		resizable = false,
+		tweakDraggable = true,
+		tweakResizable = false,
+		minimizanle = false,
+		parent = Chili.Screen0,
 	}
 
 	local topPanel = Chili.StackPanel:New{
 		x = 5,
 		y = 0,
-        right = 5,
-        height = 50,
-        itemPadding = {0,0,0,0},
-        itemMargin = {0,0,0,0},
-        orientation = "horizontal",
+		right = 5,
+		height = 50,
+		itemPadding = {0,0,0,0},
+		itemMargin = {0,0,0,0},
+		orientation = "horizontal",
 		parent = window,
 	}
 
@@ -241,11 +241,11 @@ function widget:Initialize()
 	local bottomPanel = Chili.StackPanel:New{
 		x = 5,
 		y = 50,
-        right = 5,
-        bottom = 5,
-        itemPadding = {0,0,0,0},
-        itemMargin = {0,0,0,0},
-        orientation = "horizontal",
+		right = 5,
+		bottom = 5,
+		itemPadding = {0,0,0,0},
+		itemMargin = {0,0,0,0},
+		orientation = "horizontal",
 		parent = window,
 		children = {
 			CreateUnitButton(1),
