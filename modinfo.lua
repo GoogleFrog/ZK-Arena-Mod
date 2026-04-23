@@ -2,7 +2,7 @@ return {
 	name = 'Arena Mod',
 	description = 'An arena mod',
 	shortname = 'zkarena',
-	version = 'v1.0.7',
+	version = 'v1.0.9',
 	mutator = '1',
 	game = 'Zero-K',
 	shortGame = 'ZK',
