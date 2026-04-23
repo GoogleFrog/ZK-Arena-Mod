@@ -176,6 +176,10 @@ local function OnHQReroll(HQID, HQTeamID)
 	rerollHQ(HQID)
 end
 
+local function GetDiscount(count)
+	return 0.15 * math.min(4, count - 1)
+end
+
 local function OnHQBuy(HQID, HQTeamID, buyUnitID)
 	local ud = Spring.GetUnitRulesParam(HQID, "HQBuyUnit" .. buyUnitID)
 	if ud == -1 then
@@ -195,7 +199,7 @@ local function OnHQBuy(HQID, HQTeamID, buyUnitID)
 			local count = Spring.GetUnitRulesParam(HQID, "HQSpawnUnitCount" .. i)
 			local metalCost = UnitDefs[ud].metalCost
 			Spring.SetUnitRulesParam(HQID, "HQSpawnUnitCount" .. i, count + 1, LOS_ACCESS)
-			Spring.SetUnitRulesParam(HQID, "HQSpawnUnitCost" .. i, math.floor((metalCost - (metalCost * 0.15 * count)) * (count + 1)), LOS_ACCESS)
+			Spring.SetUnitRulesParam(HQID, "HQSpawnUnitCost" .. i, math.floor((metalCost - (metalCost * GetDiscount(count + 1))) * (count + 1)), LOS_ACCESS)
 			spendMetal(unitCost, HQTeamID)
 			return
 		end
@@ -249,7 +253,8 @@ local function OnHQSpawn(HQID, HQTeamID, spawnUnitID)
 	for i = 1, unitCount do
 		local sX, sY, sZ = getHQSpawnPointFor(HQID, UnitDefs[udID])
 		local cUnitID = GG.DropUnit(UnitDefs[udID].name, sX, sY, sZ, 0, HQTeamID, false, 60)
-
+		GG.Attributes.AddEffect(cUnitID, "hq_spawn", {cost = 1 - GetDiscount(unitCount), static = true})
+		
 		if cmdQueue then
 			for i = 1, #cmdQueue do
 				local cmd = cmdQueue[i]

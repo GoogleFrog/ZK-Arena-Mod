@@ -16,6 +16,7 @@ for _, ud in pairs (UnitDefs) do
 	if ud.customparams.area_cloak_upkeep then
 		ud.customparams.area_cloak_upkeep = 0
 	end
+	--ud.reclaimable = false
 
 	if ud.weapondefs then
 		for _, wd in pairs(ud.weapondefs) do
