@@ -44,18 +44,18 @@ local unit_tweaks = {
 			pylonrange = 5,
 		},
 	},
-	turretaaflak = {
-		customParams = {
-			neededlink = 5,
-			pylonrange = 5,
-		},
-	},
-	turretaaclose = {
-		customParams = {
-			neededlink = 5,
-			pylonrange = 5,
-		},
-	},
+	--turretaaflak = {
+	--	customParams = {
+	--		neededlink = 5,
+	--		pylonrange = 5,
+	--	},
+	--},
+	--turretaaclose = {
+	--	customParams = {
+	--		neededlink = 5,
+	--		pylonrange = 5,
+	--	},
+	--},
 }
 
 return unit_tweaks
