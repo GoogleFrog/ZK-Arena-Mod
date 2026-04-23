@@ -198,62 +198,77 @@ local levelData = {
     [1] = {
         rerollCost = 75,
         upgradeCost = 200,
+        bonusHealth = 1000,
     },
     [2] = {
         rerollCost = 75,
         upgradeCost = 300,
+        bonusHealth = 2000,
     },
     [3] = {
         rerollCost = 75,
         upgradeCost = 350,
+        bonusHealth = 3000,
     },
     [4] = {
         rerollCost = 75,
         upgradeCost = 400,
+        bonusHealth = 4000,
     },
     [5] = {
         rerollCost = 75,
         upgradeCost = 450,
+        bonusHealth = 5000,
     },
     [6] = {
         rerollCost = 75,
         upgradeCost = 500,
+        bonusHealth = 6000,
     },
     [7] = {
         rerollCost = 75,
         upgradeCost = 500,
+        bonusHealth = 8000,
     },
     [8] = {
         rerollCost = 75,
         upgradeCost = 550,
+        bonusHealth = 10000,
     },
     [9] = {
         rerollCost = 75,
         upgradeCost = 600,
+        bonusHealth = 12000,
     },
     [10] = {
         rerollCost = 75,
         upgradeCost = 700,
+        bonusHealth = 15000, -- Upgrade progression ends here
     },
     [11] = {
         rerollCost = 75,
         upgradeCost = 800,
+        bonusHealth = 20000,
     },
     [12] = {
         rerollCost = 75,
         upgradeCost = 900,
+        bonusHealth = 20000,
     },
     [13] = {
         rerollCost = 75,
         upgradeCost = 1000,
+        bonusHealth = 20000,
     },
     [14] = {
         rerollCost = 75,
         upgradeCost = 1200,
+        bonusHealth = 20000,
     },
     [15] = {
         rerollCost = 75,
         upgradeCost = 1500,
+        bonusHealth = 20000,
     },
 }
 

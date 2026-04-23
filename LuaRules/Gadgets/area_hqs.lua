@@ -159,6 +159,7 @@ local function OnHQUpgrade(HQID, HQTeamID)
 			return
 		end
 
+		GG.Attributes.AddEffect(HQID, "shop_upgrade", {healthAdd = levelData[HQLevel].bonusHealth, static = true})
 		Spring.SetUnitRulesParam(HQID, "HQLevel", HQLevel + 1, LOS_ACCESS)
 		Spring.SetUnitRulesParam(HQID, "HQLevelCost", levelData[HQLevel + 1].upgradeCost, LOS_ACCESS)
 		Spring.SetUnitRulesParam(HQID, "HQRerollCost", levelData[HQLevel + 1].rerollCost, LOS_ACCESS)
