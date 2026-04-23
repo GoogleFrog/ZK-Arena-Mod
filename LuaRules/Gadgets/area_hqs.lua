@@ -147,7 +147,6 @@ local function addHQ(unitID)
 	Spring.SetUnitRulesParam(unitID, "HQLevelCost", levelData[1].upgradeCost, LOS_ACCESS)
 	Spring.SetUnitRulesParam(unitID, "HQRerollCost", levelData[1].rerollCost, LOS_ACCESS)
 
-	Spring.SetUnitBlocking(unitID, true, false)
 	rerollHQ(unitID)
 end
 
