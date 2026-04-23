@@ -71,8 +71,7 @@ local unitDef = {
   acceleration                  = 0,
   brakeRate                     = 0,
   turnRate                      = 0,
-  yardMap                       = string.rep('o', 8*8),
-  
+
   -- Categories
   category                      = [[FLOAT UNARMED]],
 
